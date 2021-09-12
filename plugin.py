@@ -117,10 +117,10 @@ class BasePlugin:
         self.commands.append(data)
 
         if self.conn == None:
-            self.commands.insert(0, (JVC_REQ, False))
+            self.commands.insert(0, (JVC_REQ, False))   # no respose to the command is expected
             self.handleConnect()
         else:        
-            if len(self.commands) == 1: # start sending process with first command, than it will be handled directly by sending process.
+            if len(self.commands) == 1: # start with first command, rest will be handled inside sendCommand().
                 #send commands
                 self.sendCommand(data)
         
